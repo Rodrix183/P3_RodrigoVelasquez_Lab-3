@@ -32,11 +32,17 @@ int main(){
     MarMediterraneo = crearCubo();
 
     //llenar de agua
-    inicializarMatrix(MarMuerto);
-
-    
+    inicializarMatrix(MarMuerto);    
     inicializarMatrix(MarMediterraneo);
 
+    //posiciones x y z
+    int x1 = 0;
+    int y1 = 0;
+    int z1 = 0;
+
+    int x2 = 0;
+    int y2 = 0;
+    int z2 = 0;
     
     do{
         if(turno % 2 == 0){
@@ -51,19 +57,31 @@ int main(){
             cin>>op1;
             switch(op1){
                 case 1:{
-              
+                    //ataque normal
+                    cout<<"Ingrese posicion x: "<<endl;
+                    cin>>x1;                    
+                    cout<<"Ingrese posicion y: "<<endl;
+                    cin>>y1;                    
+                    cout<<"Ingrese posicion z: "<<endl;
+                    cin>>z1;
+                    
+                    if(MarMuerto[x1][y1][z1]=='x'){
+                        cout<<"Nave Hundida";
+                        MarMuerto[x1][y1][z1]= '~';
+                        vidas1--;
+                    }
                 }break;
-
+                    
                 case 2:{
-
+                    
                 }break;
-
+                    
                 case 3:{
-
+                    
                 }break;
 
                 case 4:{
-
+                    
                 }break;
                 
                 default:
@@ -81,19 +99,31 @@ int main(){
             cin>>op2;
             switch(op2){
                 case 1:{
+                    //ataque normal                    
+                    cout<<"Ingrese posicion x: "<<endl;
+                    cin>>x2;
+                    cout<<"Ingrese posicion y: "<<endl;
+                    cin>>y2;
+                    cout<<"Ingrese posicion z: "<<endl;
+                    cin>>z2;
 
+                    if(MarMediterraneo[x2][y2][z2]=='x'){
+                        cout<<"Nave Hundida"<<endl;
+                        MarMediterraneo[x2][y2][z2]= '~';
+                        vidas2--;
+                    }
                 }break;
-
+                    
                 case 2:{
-
+                    
                 }break;
 
                 case 3:{
-
+                    
                 }break;
                 
                 case 4:{
-
+                    
                 }break;
 
                 default:
