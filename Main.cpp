@@ -13,6 +13,7 @@ void inicializarMatrix(char***);
 
 void liberarMatrix(char***);
 
+void print(char***);
 int main(){
     
     bool vive = true;
@@ -40,6 +41,7 @@ int main(){
     do{
         if(turno % 2 == 0){
             //aqui jugador 1
+            print(MarMuerto);
             cout<<"------------------------------JUGADOR 1------------------------------";
             cout<<"1. Ataque Normal"<<endl
             <<"2. Ataque Wave XY"<<endl
@@ -69,7 +71,7 @@ int main(){
             }
         }else if(turno % 2 != 0){
             //aqui jugador 
-            
+            print(MarMediterraneo);
             cout<<"------------------------------JUGADOR 2------------------------------";
             cout<<"1. Ataque Normal"<<endl
             <<"2. Ataque Wave XY"<<endl
@@ -175,5 +177,15 @@ void inicializarMatrix(char*** matriz){
     
 }
 
-
+void print(char*** matriz){
+    for(int i = 0; i < 12; i++){
+        for(int j = 0; j < 12; j++){
+            for(int k = 0; k <12; k++){
+                if(matriz[i][j][k] == 'x'){
+                    cout<<"("<<i<<","<<j<<","<<k<<")"<<endl;
+                }
+            }
+        }
+    }
+}
 
