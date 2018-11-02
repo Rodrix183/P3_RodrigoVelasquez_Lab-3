@@ -44,11 +44,13 @@ int main(){
     int y2 = 0;
     int z2 = 0;
     
+    int wave1 = 3;
+    int wave2 = 3;
     do{
         if(turno % 2 == 0){
             //aqui jugador 1
             print(MarMuerto);
-            cout<<"------------------------------JUGADOR 1------------------------------";
+            cout<<"------------------------------JUGADOR 1------------------------------"<<endl;
             cout<<"1. Ataque Normal"<<endl
             <<"2. Ataque Wave XY"<<endl
             <<"3. Ataque Wave XZ"<<endl
@@ -65,23 +67,61 @@ int main(){
                     cout<<"Ingrese posicion z: "<<endl;
                     cin>>z1;
                     
-                    if(MarMuerto[x1][y1][z1]=='x'){
-                        cout<<"Nave Hundida";
-                        MarMuerto[x1][y1][z1]= '~';
+                    if(MarMediterraneo[x1][y1][z1]=='x'){
+                        cout<<"Nave Hundida"<<endl;
+                        MarMediterraneo[x1][y1][z1]= '~';
                         vidas1--;
+                    }else{
+                        cout<<"Tiro Fallado!"<<endl;
                     }
                 }break;
                     
                 case 2:{
-                    
+                  //wave xy
+                    if(wave1 > 0){
+                        cout<<"Ingrese posicion en z"<<endl;
+                        cin>>z1;
+                        if(z1 >= 0 || z1 < 12){
+                            
+                        }else{
+                            cout<<"Posicion no valida"<<endl;
+                        }
+                    }else{
+                        cout<<"Se acabaron"<<endl;
+                    }    
+                    wave1--;
                 }break;
-                    
+ 
                 case 3:{
-                    
+                  //wave xz                    
+                     if(wave1 > 0){
+                        cout<<"Ingrese posicion en y"<<endl;
+                        cin>>y1;
+                        if(y1 >= 0 || y1 < 12){
+
+                        }else{
+                            cout<<"Posicion no valida"<<endl;
+                        }
+                     }else{
+                        cout<<"Se acabaron"<<endl;
+                    }
+                    wave1--;
                 }break;
 
                 case 4:{
-                    
+                  //wave yz                      
+                     if(wave1 > 0){
+                        cout<<"Ingrese posicion en x"<<endl;
+                        cin>>x1;
+                        if(x1 >= 0 || x1 < 12){
+
+                        }else{
+                            cout<<"Posicion no valida"<<endl;
+                        }
+                     }else{
+                        cout<<"Se acabaron"<<endl;
+                    }   
+                    wave1--;
                 }break;
                 
                 default:
@@ -90,7 +130,7 @@ int main(){
         }else if(turno % 2 != 0){
             //aqui jugador 
             print(MarMediterraneo);
-            cout<<"------------------------------JUGADOR 2------------------------------";
+            cout<<"------------------------------JUGADOR 2------------------------------"<<endl;
             cout<<"1. Ataque Normal"<<endl
             <<"2. Ataque Wave XY"<<endl
             <<"3. Ataque Wave XZ"<<endl
@@ -107,23 +147,60 @@ int main(){
                     cout<<"Ingrese posicion z: "<<endl;
                     cin>>z2;
 
-                    if(MarMediterraneo[x2][y2][z2]=='x'){
+                    if(MarMuerto[x2][y2][z2]=='x'){
                         cout<<"Nave Hundida"<<endl;
-                        MarMediterraneo[x2][y2][z2]= '~';
+                        MarMuerto[x2][y2][z2]= '~';
                         vidas2--;
+                    }else{
+                        cout<<"Ha Fallado!"<<endl;
                     }
                 }break;
                     
                 case 2:{
-                    
+                    //wave xy                    
+                     if(wave2 > 0){
+                        cout<<"Ingrese posicion en z "<<endl;
+                        cin>>z2;
+                        if(z2 >= 0 || z2 < 12){
+                            
+                        }else{
+                            cout<<"Posicion no valida"<<endl;
+                        }
+                     }else{
+                        cout<<"Se acabaron"<<endl;
+                     }   
                 }break;
 
                 case 3:{
+                    //wave xz
                     
+                     if(wave2 > 0){
+                        cout<<"Ingrese posicion en y "<<endl;
+                        cin>>y2;
+                        if(y2 >= 0 || y2 < 12){
+
+                        }else{
+                            cout<<"Posicion no valida"<<endl;
+                        }
+                     }else{
+                        cout<<"Se acabaron"<<endl;
+                     }    
                 }break;
                 
                 case 4:{
-                    
+                    //wave yz                    
+                     if(wave2 > 0){
+                        cout<<"Ingrese posicion en x "<<endl;
+                        cin>>x2;
+                        if(x2 >= 0 || x2 < 12){
+
+                        }else{
+                            cout<<"Posicion no valida"<<endl;
+                        }
+                     }else{
+                        cout<<"Se acabaron"<<endl;
+                    }   
+                    wave2--;
                 }break;
 
                 default:
@@ -132,7 +209,7 @@ int main(){
         }
 
         turno++;
-    }while(vive);     
+    }while(vidas1 > 0 && vidas2 > 0);     
     
     return 0;
 }
