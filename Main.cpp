@@ -1,5 +1,8 @@
 #include <iostream>
+#include <cstdlib>
 
+using std::rand;
+using std::srand;
 using std::cin;
 using std::cout;
 using std::endl;
@@ -26,6 +29,14 @@ int main(){
     //int 1sub2 = 1;
     MarMuerto = crearCubo();
     MarMediterraneo = crearCubo();
+
+    //llenar de agua
+    inicializarMatrix(MarMuerto);
+
+    
+    inicializarMatrix(MarMediterraneo);
+
+    
     do{
         if(turno % 2 == 0){
             //aqui jugador 1
@@ -34,7 +45,7 @@ int main(){
             <<"2. Ataque Wave XY"<<endl
             <<"3. Ataque Wave XZ"<<endl
             <<"4. Ataque Wave YZ"<<endl
-            <<"Ingrese una ataque";
+            <<"Ingrese una ataque"<<endl;
             cin>>op1;
             switch(op1){
                 case 1:{
@@ -63,7 +74,8 @@ int main(){
             cout<<"1. Ataque Normal"<<endl
             <<"2. Ataque Wave XY"<<endl
             <<"3. Ataque Wave XZ"<<endl
-            <<"4. Ataque Wave YZ"<<endl;
+            <<"4. Ataque Wave YZ"<<endl
+            <<"Ingrese un ataque"<<endl;
             cin>>op2;
             switch(op2){
                 case 1:{
@@ -131,13 +143,37 @@ void liberarMatrix(char*** matriz){
 
 
 void inicializarMatrix(char*** matriz){
+    //srand(time(NULL));
     for(int i = 0; i < 12;i++){
         for(int j = 0; j<12;j++){
             for(int k = 0;k<12;k++){
-                matriz[i][j][k] = '-';
+                matriz[i][j][k] = '~';
             }
         }
-    }    
+    }  
+    int llenar = 15;
+    while(llenar != 0){
+        int x = rand()%12;
+        int y = rand()%12;
+        int z = rand()%12;
+        bool repetidas = true;
+        while(repetidas){
+            
+            if(matriz[x][y][z]=='~'){
+                matriz[x][y][z] = 'x';                
+                repetidas = false;
+                llenar--;
+            }else{
+                x = rand()%12;
+                y = rand()%12;
+                z = rand()%12;
+                repetidas = true;
+            }
+        }
+        
+    }
     
 }
+
+
 
